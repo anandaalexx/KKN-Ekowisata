@@ -4,6 +4,7 @@ import Hero from "@/components/Hero";
 import OpenHours from "@/components/OpenHours";
 import About from "@/components/About";
 import TicketList from "@/components/TicketList";
+import Stats from "@/components/Stats";
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
       <Hero />
       <About />
       <TicketList />
+      <Stats />
     </>
   );
 }

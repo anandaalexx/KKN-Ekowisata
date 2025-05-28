@@ -5,17 +5,17 @@ import { MoveRight } from "lucide-react";
 const tickets = [
   {
     name: "Penguin",
-    price: "Rp. 200.000",
+    price: "Rp 200.000",
     image: "/images/penguin.jpg",
   },
   {
     name: "Bear",
-    price: "Rp. 200.000",
+    price: "Rp 200.000",
     image: "/images/bear.jpg",
   },
   {
     name: "Goat",
-    price: "Rp. 200.000",
+    price: "Rp 200.000",
     image: "/images/goat.jpg",
   },
 ];
