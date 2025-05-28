@@ -1,6 +1,7 @@
 // components/Hero.jsx
 import Image from "next/image";
 import Link from "next/link";
+import { ChevronLeft, ChevronRight, Ticket } from "lucide-react";
 
 export default function Hero() {
   return (
@@ -29,20 +30,20 @@ export default function Hero() {
         </p>
         <Link
           href="/tiket"
-          className="w-fit inline-block mt-6 bg-[#538048] hover:brightness-90 text-white text-md font-semibold px-2 py-1 rounded shadow-lg transition"
+          className="w-fit inline-flex items-center gap-2 mt-6 bg-[#538048] hover:brightness-90 text-white text-md font-semibold px-2 py-1 rounded shadow-lg transition"
         >
-          🎟️ Buy Ticket
+          <Ticket size={16} /> Buy Ticket
         </Link>
       </div>
 
       {/* Left Arrow */}
-      <button className="absolute left-0 top-1/2 transform px-8 pt-6 -translate-y-1/2 z-30 bg-[#135449] hover:brightness-110 text-white p-3">
-        &#8249;
+      <button className="absolute left-0 top-1/2 transform px-4 py-4 -translate-y-1/2 z-30 bg-[#135449] hover:brightness-110 text-white p-3 cursor-pointer">
+        <ChevronLeft size={30} />
       </button>
 
       {/* Right Arrow */}
-      <button className="absolute right-0 top-1/2 transform px-8 pt-6 -translate-y-1/2 z-30 bg-[#135449] hover:brightness-110 text-white p-3">
-        &#8250;
+      <button className="absolute right-0 top-1/2 transform px-4 py-4 -translate-y-1/2 z-30 bg-[#135449] hover:brightness-110 text-white p-3 cursor-pointer">
+        <ChevronRight size={30} />
       </button>
 
       {/* Dots Indicator */}
