@@ -5,6 +5,8 @@ import OpenHours from "@/components/OpenHours";
 import About from "@/components/About";
 import TicketList from "@/components/TicketList";
 import Stats from "@/components/Stats";
+import Gallery from "@/components/Gallery";
+import Activity from "@/components/Activity";
 
 export default function Home() {
   return (
@@ -14,6 +16,8 @@ export default function Home() {
       <About />
       <TicketList />
       <Stats />
+      <Gallery />
+      <Activity />
     </>
   );
 }

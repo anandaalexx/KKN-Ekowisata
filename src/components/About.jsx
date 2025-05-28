@@ -7,7 +7,7 @@ export default function About() {
       {/* Background Vektor */}
       <div className="absolute inset-0 w-full h-full -top-120 z-0">
         <Image
-          src="/images/bg-about.png"
+          src="/images/bg-about2.svg"
           alt="Vektor Background"
           width={1440}
           height={1000}
