@@ -13,13 +13,18 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <Hero />
-      <About />
-      <TicketList />
-      <Stats />
-      <Gallery />
-      <Activity />
-      <Footer />
+      <div className="relative">
+        <Hero />
+      </div>
+      <OpenHours />
+      <div>
+        <About />
+        <TicketList />
+        <Stats />
+        <Gallery />
+        <Activity />
+        <Footer />
+      </div>
     </>
   );
 }
