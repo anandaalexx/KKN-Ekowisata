@@ -81,18 +81,18 @@ export default function About() {
 
           {/* Kanan - Gambar Harimau */}
           <div className="relative">
-            <div className="w-[90%] ml-auto h-[600px] relative overflow-hidden shadow-lg">
+            <div className="w-[90%] ml-auto h-[650px] relative top-20 overflow-hidden shadow-lg">
               <Image
-                src="/images/macan.jpg"
+                src="/images/macan3.jpg"
                 alt="Harimau"
                 layout="fill"
                 objectFit="cover"
               />
               <div className="absolute inset-0 p-6 flex flex-col justify-end text-white">
-                <span className="text-sm">Donations</span>
-                <h3 className="text-2xl font-bold">HELP US PROTECT</h3>
-                <p className="text-lg">MORE ANIMALS</p>
-                <span className="text-[#6de36d] font-semibold mt-2">
+                <span className="text-2xl">Donations</span>
+                <h3 className="text-5xl font-medium">HELP US PROTECT</h3>
+                <p className="text-3xl">MORE ANIMALS</p>
+                <span className="text-[#07B907] hover:brightness-120 font-medium mt-2 text-3xl cursor-pointer">
                   Donate!
                 </span>
               </div>
@@ -101,7 +101,7 @@ export default function About() {
         </div>
 
         {/* Informasi Bawah */}
-        <div className="bg-[#0f4b41] text-white py-10 -mt-6">
+        <div className="bg-[#0f4b41] text-white py-10 -mt-14">
           <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-left px-6">
             {/* Location */}
             <div className="flex items-start gap-4">
