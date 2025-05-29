@@ -7,6 +7,7 @@ import TicketList from "@/components/TicketList";
 import Stats from "@/components/Stats";
 import Gallery from "@/components/Gallery";
 import Activity from "@/components/Activity";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
       <Stats />
       <Gallery />
       <Activity />
+      <Footer />
     </>
   );
 }
