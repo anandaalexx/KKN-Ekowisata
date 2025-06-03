@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Search, ScanLine, ListFilter } from "lucide-react";
 import Image from "next/image";
+import clsx from "clsx";
 
 export default function SearchNavbar() {
   const pathname = usePathname();
@@ -15,6 +16,11 @@ export default function SearchNavbar() {
       : pathname === "/berita"
       ? "#13564C"
       : "#FFFFFF";
+
+  const useWhiteLogo = backgroundColor !== "#FFFFFF";
+  const logoSrc = useWhiteLogo ? "/images/whitelogo.png" : "/images/logo.png";
+
+  const textColor = useWhiteLogo ? "text-white" : "text-[#1D3F11]";
 
   // Logika menu berdasarkan halaman
   const menuItems =
@@ -42,7 +48,7 @@ export default function SearchNavbar() {
         {/* Logo */}
         <Link href="/" className="w-34 h-auto">
           <Image
-            src="/images/whitelogo.png"
+            src={logoSrc}
             alt="Logo Mini Zoo"
             width={192}
             height={72}
@@ -52,32 +58,35 @@ export default function SearchNavbar() {
         </Link>
 
         {/* Search bar */}
-        <div className="flex flex-1 max-w-lg -ml-8">
-          <div className="flex items-center bg-[#211F26] text-white rounded-xl w-full overflow-hidden">
+        <div className="flex flex-1 max-w-lg -ml-24">
+          <div className="flex items-center bg-[#1C1B1F] text-white rounded-xl w-full overflow-hidden">
             <span className="p-3">
-              <Search className="w-5 h-5 text-gray-300 cursor-pointer hover:brightness-90" />
+              <Search className="w-5 h-5 text-[#CAC4D0] cursor-pointer hover:brightness-90" />
             </span>
             <input
               type="text"
               placeholder="Search animals"
-              className="bg-transparent text-sm w-full focus:outline-none placeholder:text-gray-400"
+              className="bg-transparent text-sm w-full focus:outline-none placeholder:text-[#49454F]"
             />
             <span className="p-3">
-              <ScanLine className="w-5 h-5 text-gray-300 cursor-pointer hover:brightness-90" />
+              <ScanLine className="w-5 h-5 text-[#CAC4D0] cursor-pointer hover:brightness-90" />
             </span>
           </div>
         </div>
 
         {/* Menu icon */}
-        <button className="bg-[#211F26] p-3 rounded-xl -ml-38">
-          <ListFilter className="w-5 h-5 text-gray-300 cursor-pointer hover:brightness-90" />
+        <button className="bg-[#211F26] p-3 rounded-xl -ml-58">
+          <ListFilter className="w-5 h-5 text-[#CAC4D0] cursor-pointer hover:brightness-90" />
         </button>
 
         {/* Menu dinamis */}
-        <ul className="flex space-x-8 text-white font-semibold text-lg ml-6">
+        <ul
+          className={clsx("flex space-x-8 font-semibold text-lg", textColor)}
+          style={{ textColor }}
+        >
           {menuItems.map((item, index) => (
             <li key={index}>
-              <Link href={item.href} className="hover:underline">
+              <Link href={item.href} className="hover:brightness-110">
                 {item.label}
               </Link>
             </li>
