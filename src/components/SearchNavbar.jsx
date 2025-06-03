@@ -2,12 +2,12 @@ import Link from "next/link";
 import { FiSearch, FiFilter } from "react-icons/fi";
 import Image from "next/image";
 
-export default function Navbar() {
+export default function SearchNavbar() {
   return (
     <nav className="bg-[#13564C] px-6 py-3 flex items-center justify-between shadow-md">
       {/* Logo */}
       <div className="flex items-center">
-        <Image src="/next.svg" alt="Logo" width={90} height={40} />
+        <Image src="/images/whitelogo.png" alt="Logo" width={90} height={40} />
       </div>
 
       {/* Search Bar */}
