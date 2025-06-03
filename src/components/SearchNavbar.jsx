@@ -27,10 +27,10 @@ export default function SearchNavbar() {
           <Link href="/" className="hover:underline">Home</Link>
         </li>
         <li>
-          <Link href="#" className="hover:underline">Berita</Link>
+          <Link href="/berita/dokumenter" className="hover:underline">Berita</Link>
         </li>
         <li>
-          <Link href="#" className="hover:underline">Flora & Fauna</Link>
+          <Link href="/berita/flora-fauna" className="hover:underline">Flora & Fauna</Link>
         </li>
       </ul>
     </nav>
