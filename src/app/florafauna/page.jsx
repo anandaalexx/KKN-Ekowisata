@@ -1,12 +1,11 @@
-// src/pages/FloraFaunaPage.jsx (atau app/berita/florafauna/page.jsx)
 "use client";
 import React from 'react';
-import SearchNavbar from '@/components/SearchNavbar'; // Sesuaikan path jika perlu
-import FloraFaunaCard from '@/components/FloraFaunaCard'; // Sesuaikan path jika perlu
-import FilterPanel from '@/components/FilterPanel'; // Sesuaikan path jika perlu
-import Link from 'next/link'; // Untuk navigasi tab
+import SearchNavbar from '@/components/SearchNavbar';
+import FloraFaunaCard from '@/components/FloraFaunaCard';
+import FilterPanel from '@/components/FilterPanel';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
-// Contoh data untuk Flora & Fauna (ganti dengan data asli Anda)
 const itemsData = [
   { id: 1, image: '/images/ff/dusky_shark.jpg', name: 'Dusky Shark', line1: 'Friend of people', line2: 'Always scared' },
   { id: 2, image: '/images/ff/capybara.jpg', name: 'Capybara', line1: 'Friend of people', line2: 'Always scared' },
@@ -25,42 +24,55 @@ const itemsData = [
   { id: 15, image: '/images/ff/antelope.jpg', name: 'Antelope', line1: 'Friend of people', line2: 'Always scared' },
 ];
 
-
 export default function FloraFaunaPage() {
+  const pathname = usePathname();
+
   const handleCardClick = (itemName) => {
-    // Logika ketika kartu di klik, misalnya navigasi ke detail item
     console.log("Clicked on:", itemName);
-    // router.push(`/berita/florafauna/${itemName.toLowerCase().replace(/\s+/g, '-')}`);
     alert(`Menuju detail ${itemName} (simulasi)`);
   };
+
+  const tabItems = [
+    { name: "Flora & Fauna", href: "/florafauna" }, 
+    { name: "Documentary", href: "/berita" }  
+  ];
   
   return (
-    // Latar belakang utama halaman
     <div 
-        className="min-h-screen bg-[#1A202C] bg-bottom bg-no-repeat bg-contain" // bg-contain untuk siluet
-        style={{ backgroundImage: "url('/siluet-hutan.png')" }} // Ganti dengan path gambar siluet hutan Anda
+      className="min-h-screen bg-bottom bg-no-repeat bg-cover"
+      style={{ backgroundImage: "url('/images/bgflora.png')" }}
     >
-      <SearchNavbar /> {/* Navbar Anda, pastikan stylingnya cocok dengan tema gelap */}
+      <SearchNavbar />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Tab Navigasi */}
-        <div className="mb-8 flex justify-center space-x-2 border-b border-gray-300">
-            <Link href="/berita/florafauna" className="py-3 px-6 text-gray-600 hover:text-green-700 hover:border-green-600 border-b-2 border-transparent">
-                Flora & Fauna
-            </Link>
-            <Link href="/berita/dokumenter" className="py-3 px-6 text-green-700 border-green-600 border-b-2 font-semibold">
-                Documentary
-            </Link>
+        <div className="mb-8 flex justify-center items-center py-2 space-x-0 md:space-x-1">
+          {tabItems.map((tab) => {
+            const isActive = pathname === tab.href;
+            return (
+              <Link key={tab.name} href={tab.href} legacyBehavior>
+                <a
+                  className={`
+                    py-2.5 px-4 sm:px-6 focus:outline-none rounded-md
+                    text-sm font-medium transition-all duration-200 ease-in-out
+                    ${
+                      isActive
+                        ? 'bg-[#13564C] text-white shadow-md'
+                        : 'text-gray-400 hover:text-white hover:bg-gray-700/50'
+                    }
+                  `}
+                >
+                  {tab.name}
+                </a>
+              </Link>
+            );
+          })}
         </div>
 
-        {/* Konten Utama: Filter Panel (Kiri) dan Grid Kartu (Kanan) */}
         <div className="flex flex-col lg:flex-row gap-8">
-          {/* Panel Filter Kiri */}
-          <div className="w-full lg:w-auto lg:sticky lg:top-20 self-start"> {/* Sticky untuk panel filter di layar besar */}
+          <div className="w-full lg:w-auto lg:sticky lg:top-20 self-start">
             <FilterPanel />
           </div>
 
-          {/* Grid Kartu Kanan */}
           <div className="flex-1">
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-5">
               {itemsData.map((item) => (
@@ -74,11 +86,15 @@ export default function FloraFaunaPage() {
                 />
               ))}
             </div>
-            {/* Tambahkan pagination di sini jika perlu */}
+            {itemsData.length === 0 && (
+              <div className="col-span-full text-center py-10 text-gray-400">
+                Tidak ada item flora & fauna untuk ditampilkan saat ini.
+              </div>
+            )}
           </div>
         </div>
       </div>
-      {/* <Footer />  Jika ada footer, pastikan stylingnya cocok */}
+      {/* <Footer /> */}
     </div>
   );
 }
