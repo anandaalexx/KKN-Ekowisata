@@ -61,7 +61,7 @@ export default function Tiket() {
               textShadow: '2px 2px 4px rgba(0,0,0,0.2)'
             }}
           >
-            Tiket Pricelist
+            Ticket Pricelist
           </h1>
           {/* Wadah untuk kartu tiket */}
           <div className="flex flex-wrap justify-center items-stretch gap-x-8 gap-y-10 w-full max-w-6xl xl:max-w-7xl">
