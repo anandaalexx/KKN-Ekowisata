@@ -23,7 +23,7 @@ const ticketsData = [
     descriptionParagraph:
       "Saksikan kegagahan beruang grizzly di habitat alaminya yang luas dan pelajari fakta menarik tentang mereka.",
     descriptionList: [
-      "Area نمایش beruang yang aman", // "Pertunjukan" atau "Display"
+      "Area نمایش beruang yang aman",
       "Informasi tentang jenis-jenis beruang",
       "Program adopsi simbolis beruang",
     ],
