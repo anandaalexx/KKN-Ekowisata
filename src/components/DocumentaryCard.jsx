@@ -61,12 +61,12 @@ export default function DokumenterCard({
         
         <button
           onClick={onReadMore}
-          className="btn btn-sm bg-green-600 hover:bg-green-700 text-white self-start normal-case font-medium px-4 group mt-4" // mt-4 agar ada jarak jika konten teks pendek
+          className="w-[170px] rounded-lg btn btn-sm bg-[#13564C] hover:bg-green-700 text-white self-start normal-case font-medium px-4 py-2 group mt-16 flex justify-center items-center transition-all duration-200"
         >
           Read more
           <div className="flex items-center ml-1.5 sm:ml-2">
-            <ChevronRight size={12} className="transition-transform duration-200 ease-in-out group-hover:translate-x-0.5" />
-            <ChevronRight size={12} className="-ml-2 sm:-ml-2.5 transition-transform duration-200 ease-in-out group-hover:translate-x-0.5" />
+            <ChevronRight size={16} className="transition-transform duration-200 ease-in-out group-hover:translate-x-0.5" />
+            <ChevronRight size={16} className="-ml-2 sm:-ml-2.5 transition-transform duration-200 ease-in-out group-hover:translate-x-0.5" />
           </div>
         </button>
         </div>

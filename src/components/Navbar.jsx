@@ -29,7 +29,7 @@ export default function Navbar() {
             <Link href="/tiket">Tiket</Link>
           </li>
           <li>
-            <Link href="/flora-fauna">Flora & Fauna</Link>
+            <Link href="/florafauna">Flora & Fauna</Link>
           </li>
           <li>
             <Link href="/berita">Berita</Link>
@@ -39,7 +39,7 @@ export default function Navbar() {
         {/* CTA Button */}
         <div>
           <Link
-            href="/pesan-tiket"
+            href="/tiket"
             className="bg-[#135449] hover:brightness-110 text-white text-2xl ml-6 font-semibold px-6 py-1.5 rounded-full transition"
           >
             Pesan Tiket

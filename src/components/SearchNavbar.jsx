@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function SearchNavbar() {
   return (
-    <nav className="bg-[#13564C] px-6 py-3 flex items-center justify-between shadow-md">
+    <nav className="bg-[#13564C] px-6 py-3 flex items-center justify-between shadow-md sticky top-0 z-50">
       {/* Logo */}
       <div className="flex items-center">
         <Image src="/images/whitelogo.png" alt="Logo" width={90} height={40} />

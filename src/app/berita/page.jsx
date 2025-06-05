@@ -1,16 +1,16 @@
-// src/pages/DokumenterPage.jsx (atau path yang sesuai, misal app/berita/dokumenter/page.jsx jika menggunakan App Router Next.js)
+// src/pages/DokumenterPage.jsx (atau path yang sesuai, misal app/berita/page.jsx atau app/florafauna/page.jsx jika ini adalah halaman listnya)
 "use client";
 import React from 'react';
 import SearchNavbar from '@/components/SearchNavbar'; // Sesuaikan path jika perlu
 import DokumenterCard from '@/components/DocumentaryCard';// Pastikan nama komponen dan path ini benar
 import Link from 'next/link';
-import { usePathname } from 'next/navigation'; // 1. Impor usePathname
+import { usePathname, useRouter } from 'next/navigation'; // 1. Impor useRouter dan usePathname
 
-// Contoh data untuk halaman dokumenter (Sesuai kode Anda)
+// Contoh data untuk halaman dokumenter
 const dokumenterData = [
   {
     id: 1,
-    image: "/images/gambarberita.png", 
+    image: "/images/gambarberita.png",
     title: "Animal Feeding",
     location: "Lorem Ipsum",
     summary: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
@@ -22,7 +22,7 @@ const dokumenterData = [
   },
   {
     id: 2,
-    image: "/images/gambarberita.png", 
+    image: "/images/gambarberita.png",
     title: "Another Animal Story",
     location: "Somewhere Else",
     summary: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.",
@@ -36,18 +36,24 @@ const dokumenterData = [
 ];
 
 export default function DokumenterPage() {
-  const pathname = usePathname(); // 2. Dapatkan path saat ini
+  const pathname = usePathname();
+  const router = useRouter(); // 2. Inisialisasi router
 
+  // 3. Modifikasi handleReadMore untuk navigasi
   const handleReadMore = (id) => {
-    console.log("Read more clicked for ID:", id);
-    alert(`Navigasi ke detail dokumenter ID: ${id} (simulasi)`);
+    console.log("Navigating to details for ID:", id);
+    // Tentukan path halaman detail Anda. Sesuaikan '/berita/dokumenter/' jika perlu.
+    // Misalnya, jika tab "Documentary" aktif, mungkin Anda ingin '/berita/dokumenter/[id]'
+    // Jika tab "Flora & Fauna" aktif dan dokumenter ada di sana, path-nya bisa berbeda.
+    // Untuk contoh ini, saya asumsikan semua detail dokumenter ada di bawah '/berita/dokumenter/'
+    router.push(`/berita/${id}`);
   };
 
-  // 3. Definisikan item tab
+  // Definisikan item tab
   const tabItems = [
     // Sesuaikan href ini dengan struktur routing Anda yang sebenarnya
-    { name: "Flora & Fauna", href: "/florafauna" }, 
-    { name: "Documentary", href: "/berita" } 
+    { name: "Flora & Fauna", href: "/florafauna" }, // Ini mungkin halaman list untuk Flora & Fauna
+    { name: "Documentary", href: "/berita" }      // Ini mungkin halaman list untuk Berita/Documentary
   ];
 
   return (
@@ -61,13 +67,19 @@ export default function DokumenterPage() {
         backgroundColor: '#f9fafb', // fallback bg-gray-50
       }}
     >
-      <SearchNavbar /> 
+      <SearchNavbar />
 
       <main className="container mx-auto px-4 py-8 relative z-10">
-        {/* BAGIAN NAVIGASI TAB DENGAN STYLING TEMA GELAP YANG ANDA MINTA */}
+        {/* BAGIAN NAVIGASI TAB */}
         <div className="mb-8 flex justify-center items-center py-2 space-x-0 md:space-x-1">
           {tabItems.map((tab) => {
-            const isActive = pathname === tab.href; 
+            // Logika isActive mungkin perlu disesuaikan jika halaman detail memiliki path yang sama
+            // Misalnya, jika /berita/dokumenter/1 aktif, tab "Documentary" (/berita) juga akan aktif.
+            // Jika Anda ingin tab hanya aktif di halaman listnya, Anda bisa menggunakan:
+            // const isActive = pathname === tab.href;
+            // Jika Anda ingin tab tetap aktif saat di halaman detail yang bersangkutan:
+            const isActive = pathname.startsWith(tab.href);
+
 
             return (
               <Link key={tab.name} href={tab.href} legacyBehavior>
@@ -99,22 +111,22 @@ export default function DokumenterPage() {
               location={doc.location}
               summary={doc.summary}
               listItems={doc.listItems}
-              onReadMore={() => handleReadMore(doc.id)}
+              onReadMore={() => handleReadMore(doc.id)} // Pastikan ini memanggil fungsi yang sudah diupdate
             />
           ))}
         </div>
       </main>
-      
+
       {/* Background siluetdokumenter.png di bawah */}
-      <div 
+      <div
         className="absolute bottom-0 left-0 w-full h-64 pointer-events-none z-0"
-        style={{ 
-            backgroundImage: "url('/siluetdokumenter.png')", 
-            backgroundSize: 'cover', 
-            backgroundRepeat: 'no-repeat',
-            backgroundPosition: 'bottom center',
-            opacity: 0.7, 
-        }} 
+        style={{
+          backgroundImage: "url('/images/siluetdokumenter.png')", // Pastikan path ini benar di folder public
+          backgroundSize: 'cover',
+          backgroundRepeat: 'no-repeat',
+          backgroundPosition: 'bottom center',
+          opacity: 0.7,
+        }}
       />
     </div>
   );

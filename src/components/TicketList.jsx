@@ -38,7 +38,7 @@ export default function TicketList() {
             </h2>
           </div>
           <Link
-            href="/tickets"
+            href="/tiket"
             className="text-md text-black font-medium flex items-center gap-1 relative top-47"
           >
             View all{" "}
