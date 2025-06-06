@@ -2,6 +2,7 @@
 import React from "react";
 import SearchNavbar from "@/components/SearchNavbar";
 import TicketCard from "@/components/TicketCard";
+import Footer from "@/components/Footer";
 
 const ticketsData = [
   {
@@ -44,42 +45,45 @@ const ticketsData = [
 
 export default function Tiket() {
   return (
-    <div className="relative min-h-screen">
-      {/* Base putih di paling belakang */}
-      <div className="absolute inset-0 w-full h-full bg-white z-0" />
-      {/* Lapisan background gambar */}
-      <div
-        className="absolute inset-0 w-full h-full bg-bottom bg-no-repeat bg-cover z-10"
-        style={{ backgroundImage: "url('/tiketbg.png')" }}
-      />
-      {/* Konten utama */}
-      <div className="relative z-20">
-        <SearchNavbar />
-        <main className="px-2 sm:px-8 py-8 flex flex-col items-center">
-          <h1
-            className="text-5xl md:text-6xl font-extrabold text-[#6CAC5C] mb-16 text-center"
-            style={{
-              fontFamily: "inherit",
-              textShadow: "2px 2px 4px rgba(0,0,0,0.2)",
-            }}
-          >
-            Ticket Pricelist
-          </h1>
-          {/* Wadah untuk kartu tiket */}
-          <div className="flex flex-wrap justify-center items-stretch gap-x-8 gap-y-10 w-full max-w-6xl xl:max-w-7xl">
-            {ticketsData.map((ticket) => (
-              <TicketCard
-                key={ticket.name}
-                image={ticket.image}
-                name={ticket.name}
-                price={ticket.price}
-                descriptionParagraph={ticket.descriptionParagraph}
-                descriptionList={ticket.descriptionList}
-              />
-            ))}
-          </div>
-        </main>
+    <>
+      <div className="relative min-h-[1050px]">
+        {/* Base putih di paling belakang */}
+        <div className="absolute inset-0 w-full h-full bg-white z-0" />
+        {/* Lapisan background gambar */}
+        <div
+          className="absolute inset-0 w-full h-full bg-bottom bg-no-repeat bg-contain z-10"
+          style={{ backgroundImage: "url('/images/bg-tiket.svg')" }}
+        />
+        {/* Konten utama */}
+        <div className="relative z-20">
+          <SearchNavbar />
+          <main className="px-2 sm:px-8 py-8 flex flex-col items-center">
+            <h1
+              className="text-5xl md:text-6xl font-extrabold text-[#6CAC5C] mb-16 text-center"
+              style={{
+                fontFamily: "inherit",
+                textShadow: "2px 2px 4px rgba(0,0,0,0.2)",
+              }}
+            >
+              Ticket Pricelist
+            </h1>
+            {/* Wadah untuk kartu tiket */}
+            <div className="flex flex-wrap justify-center items-stretch gap-x-8 gap-y-10 w-full max-w-6xl xl:max-w-7xl">
+              {ticketsData.map((ticket) => (
+                <TicketCard
+                  key={ticket.name}
+                  image={ticket.image}
+                  name={ticket.name}
+                  price={ticket.price}
+                  descriptionParagraph={ticket.descriptionParagraph}
+                  descriptionList={ticket.descriptionList}
+                />
+              ))}
+            </div>
+          </main>
+        </div>
       </div>
-    </div>
+      <Footer />
+    </>
   );
 }

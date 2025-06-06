@@ -110,15 +110,10 @@ export default function DokumenterPage() {
           </div>
         </main>
 
-        <div className="absolute inset-0 w-full h-full top-100 z-0">
-          <Image
-            src="/images/bg-documenter.svg"
-            alt="Vektor Background"
-            width={1440}
-            height={1000}
-            className="w-full object-cover"
-          />
-        </div>
+        <div
+          className="absolute inset-0 w-full h-full bg-bottom bg-no-repeat bg-contain z-10"
+          style={{ backgroundImage: "url('/images/bg-documenter.svg')" }}
+        />
       </div>
       <Footer />
     </>
