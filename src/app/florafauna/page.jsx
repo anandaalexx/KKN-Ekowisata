@@ -5,7 +5,7 @@ import SearchNavbar from "@/components/SearchNavbar";
 import FloraFaunaCard from "@/components/FloraFaunaCard";
 import FilterPanel from "@/components/FilterPanel";
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation"; // 1. Impor useRouter
+import { usePathname, useRouter } from "next/navigation";
 
 const itemsData = [
   {
@@ -117,23 +117,16 @@ const itemsData = [
 
 export default function FloraFaunaPage() {
   const pathname = usePathname();
-  const router = useRouter(); // 2. Inisialisasi useRouter
+  const router = useRouter();
 
-  // 3. Fungsi handleCardClick diubah untuk menggunakan router.push()
   const handleCardClick = (itemName) => {
     console.log("Navigating to details for:", itemName);
-    // Membuat slug yang ramah URL dari nama item
-    // Contoh: "Dusky Shark" menjadi "dusky-shark"
-
-    // Arahkan ke halaman detail. Anda akan menyesuaikan path ini.
-    // Misalnya, jika halaman ini adalah /florafauna, maka detailnya mungkin /florafauna/[slug]
-    // atau jika berada di bawah /berita, maka /berita/florafauna/[slug]
-    router.push(`/florafauna/1`); // Anda bilang route akan Anda sesuaikan sendiri
+    router.push(`/florafauna/1`);
   };
 
   const tabItems = [
-    { name: "Flora & Fauna", href: "/florafauna" }, // Path ini mungkin perlu disesuaikan juga
-    { name: "Documentary", href: "/berita" }, // Path ini mungkin perlu disesuaikan juga
+    { name: "Flora & Fauna", href: "/florafauna" },
+    { name: "Documentary", href: "/berita" },
   ];
 
   return (
@@ -143,12 +136,10 @@ export default function FloraFaunaPage() {
     >
       <SearchNavbar />
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      {/* Konten utama dengan lebar maksimal 7xl dan responsif */}
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 max-w-7xl">
         <div className="mb-8 flex justify-center items-center py-2 space-x-0 md:space-x-1">
           {tabItems.map((tab) => {
-            // Jika halaman ini misalnya /florafauna, dan tab.href adalah /florafauna, maka isActive = true
-            // Untuk /berita/florafauna (App Router), pathname akan '/berita/florafauna'
-            // Sesuaikan tabItems[x].href agar cocok dengan struktur routing Anda
             const isActive =
               pathname === tab.href ||
               (tab.href === "/florafauna" &&
@@ -180,7 +171,8 @@ export default function FloraFaunaPage() {
           </div>
 
           <div className="flex-1">
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-5">
+            {/* Grid untuk 3 kartu per baris */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 -mr-3 bg-black/20">
               {itemsData.map((item) => (
                 <FloraFaunaCard
                   key={item.id}
@@ -188,7 +180,7 @@ export default function FloraFaunaPage() {
                   name={item.name}
                   line1={item.line1}
                   line2={item.line2}
-                  onClick={() => handleCardClick(item.name)} // Memanggil handleCardClick yang sudah diubah
+                  onClick={() => handleCardClick(item.name)}
                 />
               ))}
             </div>

@@ -1,17 +1,26 @@
+// src/components/AnimalCard.jsx
 import Image from "next/image";
 
 export default function AnimalCard({ name, image }) {
   return (
-    <div className="flex space-x-4 items-center text-white">
-      <Image
-        src={image}
-        alt={name}
-        width={80}
-        height={80}
-        className="rounded-lg object-cover"
-      />
-      <div>
-        <h3 className="font-semibold">{name}</h3>
+    // Mengubah flex menjadi block dan menambahkan padding serta background
+    <div className="flex flex-col items-start p-4 bg-[#26303E] rounded-xl shadow-lg text-white">
+      <div className="mb-4 w-full flex justify-center">
+        {" "}
+        {/* Container untuk gambar agar bisa di-center */}
+        <Image
+          src={image}
+          alt={name}
+          width={120} // Sesuaikan ukuran gambar, mungkin 120px atau lebih
+          height={120} // Sesuaikan ukuran gambar
+          className="rounded-xl object-cover aspect-square" // Sudut lebih membulat dan pastikan rasio aspek square
+        />
+      </div>
+      <div className="text-left w-full">
+        {" "}
+        {/* Pastikan teks rata kiri */}
+        <h3 className="font-semibold text-lg mb-1">{name}</h3>{" "}
+        {/* Ukuran font lebih besar */}
         <p className="text-sm text-gray-400">Friend of people</p>
         <p className="text-sm text-gray-400">Always scared</p>
       </div>

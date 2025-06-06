@@ -4,7 +4,7 @@ import SearchNavbar from "@/components/SearchNavbar";
 
 export default function FloraFaunaPage() {
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="max-w-7xl bg-black text-white">
       {/* Navbar di atas */}
       <SearchNavbar />
 

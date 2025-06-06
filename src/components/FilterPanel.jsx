@@ -1,32 +1,55 @@
 // src/components/FilterPanel.jsx
 "use client";
-import React, { useState, useEffect, useRef } from 'react';
-import { Search, ChevronDown } from 'lucide-react';
+import React, { useState, useEffect, useRef } from "react";
+import { Search, ChevronDown } from "lucide-react";
 
 export default function FilterPanel() {
-  const [activeToggle, setActiveToggle] = useState('fauna');
-  
-  const allTags = ['Obat', 'Langka', 'Endemik', 'Berbunga', 'Mamalia', 'Friendly', 'Reptil', 'Burung', 'Ikan'];
+  const [activeToggle, setActiveToggle] = useState("fauna"); // Default 'fauna' sesuai gambar
+
+  const allTags = [
+    "Obat",
+    "Langka",
+    "Endemik",
+    "Berbunga",
+    "Mamalia",
+    "Friendly",
+    "Reptil",
+    "Burung",
+    "Ikan",
+  ];
+  // Sesuaikan selectedTags dengan gambar (Kalimantan dan Sumatra aktif di bagian area, bukan tags umum)
   const [selectedTags, setSelectedTags] = useState([]);
   const [showAllTags, setShowAllTags] = useState(false);
-  const displayedTags = showAllTags ? allTags : allTags.slice(0, 7);
+  // Di gambar hanya menampilkan 6 tags di awal, kita sesuaikan slice-nya
+  const displayedTags = showAllTags ? allTags : allTags.slice(0, 6);
 
   // State untuk dropdown Area
-  const [selectedArea, setSelectedArea] = useState('Kalimantan'); // Default bisa area spesifik atau 'Semua Area' / ''
+  // Sesuaikan default selectedArea agar sesuai dengan gambar
+  const [selectedArea, setSelectedArea] = useState("Kalimantan");
   const [isAreaDropdownOpen, setIsAreaDropdownOpen] = useState(false);
-  const areaOptions = ['Semua Area', 'Kalimantan', 'Sumatra', 'Jawa', 'Papua', 'Sulawesi'];
+  const areaOptions = [
+    "Kalimantan",
+    "Sumatra",
+    "Jawa",
+    "Papua",
+    "Sulawesi",
+    "Semua Area",
+  ]; // Sesuaikan urutan sesuai gambar
   const areaDropdownRef = useRef(null); // Ref untuk dropdown area
 
   const toggleTag = (tag) => {
-    setSelectedTags(prev => 
-      prev.includes(tag) ? prev.filter(t => t !== tag) : [...prev, tag]
+    setSelectedTags((prev) =>
+      prev.includes(tag) ? prev.filter((t) => t !== tag) : [...prev, tag]
     );
   };
-  
+
   // Efek untuk menutup dropdown area jika diklik di luar
   useEffect(() => {
     function handleClickOutside(event) {
-      if (areaDropdownRef.current && !areaDropdownRef.current.contains(event.target)) {
+      if (
+        areaDropdownRef.current &&
+        !areaDropdownRef.current.contains(event.target)
+      ) {
         setIsAreaDropdownOpen(false);
       }
     }
@@ -42,112 +65,139 @@ export default function FilterPanel() {
 
   // Handler untuk memilih item dari dropdown area
   const handleAreaSelect = (area) => {
-    setSelectedArea(area); // Langsung set area yang dipilih
-    setIsAreaDropdownOpen(false); // Tutup dropdown setelah memilih
+    setSelectedArea(area);
+    setIsAreaDropdownOpen(false);
   };
 
-  // Gaya untuk filter aktif (yang Anda sebut "ghost button")
-  const activeFilterStyle = "bg-gray-200 text-gray-800 font-semibold border border-gray-400/50 shadow-sm";
-  // Gaya untuk filter tidak aktif (tombol)
-  const inactiveFilterButtonStyle = "bg-slate-700/40 text-gray-300 hover:bg-slate-600/60 border border-transparent";
-  // Gaya untuk filter tidak aktif (teks toggle Flora)
-  const inactiveToggleTextStyle = "text-gray-500 hover:text-gray-300 opacity-70";
+  // --- Penyesuaian Gaya Sesuai Gambar ---
+
+  // Gaya untuk toggle Flora/Fauna
+  const toggleActiveStyle = "bg-[#2E3C4D] text-[#86E49D] font-bold"; // Warna hijau terang untuk teks dan background abu-abu gelap
+  const toggleInactiveStyle = "text-gray-500 font-bold opacity-70"; // Warna abu-abu untuk teks Flora
+
+  // Gaya untuk tag aktif (yang dipilih)
+  const tagActiveStyle = "bg-[#374151] text-white border border-[#4B5563]"; // Background abu-abu gelap dengan border
+
+  // Gaya untuk tag tidak aktif
+  const tagInactiveStyle =
+    "bg-transparent text-gray-300 hover:bg-[#374151] border border-transparent";
+
+  // Gaya untuk dropdown area
+  const areaDropdownButtonStyle =
+    "w-full flex items-center justify-between text-left px-3 py-2 bg-[#374151] border border-[#4B5563] text-gray-200 hover:bg-[#4B5563] focus:outline-none focus:ring-1 focus:ring-blue-500 rounded-md text-sm";
+  const areaDropdownMenuStyle =
+    "absolute right-0 mt-1 w-full bg-[#2A3547] border border-[#4B5563] rounded-md shadow-lg z-50 p-1 max-h-60 overflow-y-auto";
 
   return (
-    <div className="w-full lg:w-72 bg-[#26303E] p-5 rounded-xl shadow-lg h-fit sticky top-24 font-inter text-white">
+    <div className="w-full lg:w-72 bg-[#26303E] p-5 pb-70 rounded-xl shadow-lg h-full sticky top-24 font-inter text-white">
+      {/* Search Input */}
       <div className="relative mb-6">
-        <Search size={20} className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none" />
-        <input 
-          type="text" 
-          placeholder="Search in Animals" 
-          className="input w-full pl-12 pr-4 py-3 bg-[#374151] border-none text-gray-200 placeholder-gray-400 focus:ring-1 focus:ring-blue-500 rounded-md text-sm transition-colors" 
+        <Search
+          size={20}
+          className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none"
+        />
+        <input
+          type="text"
+          placeholder="Search in Animals"
+          className="input w-full pl-12 pr-4 py-3 bg-[#374151] border-none text-gray-200 placeholder-gray-400 focus:ring-1 focus:ring-blue-500 rounded-md text-sm transition-colors"
         />
       </div>
+
+      {/* Flora/Fauna Toggle */}
       <div className="flex items-center justify-center mb-5 space-x-1">
-        <button 
-          onClick={() => setActiveToggle('flora')}
-          className={`px-3 py-1.5 text-2xl font-bold transition-colors duration-200 rounded-md w-1/2 ${
-            activeToggle === 'flora' ? activeFilterStyle : inactiveToggleTextStyle
+        <button
+          onClick={() => setActiveToggle("flora")}
+          className={`px-3 py-1.5 text-xl font-bold transition-colors duration-200 rounded-lg w-1/2 ${
+            // Rounded-lg for more roundness
+            activeToggle === "flora" ? toggleActiveStyle : toggleInactiveStyle
           }`}
         >
           Flora
         </button>
-        <button 
-          onClick={() => setActiveToggle('fauna')}
-          className={`px-3 py-1.5 text-2xl font-bold transition-colors duration-200 rounded-md w-1/2 ${
-            activeToggle === 'fauna' ? activeFilterStyle : inactiveToggleTextStyle
+        <button
+          onClick={() => setActiveToggle("fauna")}
+          className={`px-3 py-1.5 text-xl font-bold transition-colors duration-200 rounded-lg w-1/2 ${
+            // Rounded-lg for more roundness
+            activeToggle === "fauna" ? toggleActiveStyle : toggleInactiveStyle
           }`}
         >
           Fauna
         </button>
       </div>
+
+      {/* Tags Section */}
       <div className="mb-6">
         <div className="flex flex-wrap gap-2 items-center justify-center">
-          {displayedTags.map(tag => (
-            <button 
-              key={tag} 
+          {displayedTags.map((tag) => (
+            <button
+              key={tag}
               onClick={() => toggleTag(tag)}
               className={`px-3 py-1 text-xs sm:text-sm rounded-md transition-colors duration-150 font-medium ${
-                selectedTags.includes(tag) ? activeFilterStyle : inactiveFilterButtonStyle
+                selectedTags.includes(tag) ? tagActiveStyle : tagInactiveStyle
               }`}
             >
               {tag}
             </button>
           ))}
         </div>
-        {allTags.length > displayedTags.length && (
-            <button 
-                onClick={() => setShowAllTags(!showAllTags)} 
-                className="text-xs text-gray-400 hover:text-white mt-3 flex items-center mx-auto"
-            >
-                {showAllTags ? 'Less Tags' : 'More Tags'} 
-                <ChevronDown size={16} className={`inline ml-1 transform transition-transform ${showAllTags ? 'rotate-180' : ''}`} />
-            </button>
+        {/* Only show "More Tags" if there are more tags to display */}
+        {allTags.length > 6 && ( // Sesuaikan ini menjadi 6 karena displayedTags.slice(0, 6)
+          <button
+            onClick={() => setShowAllTags(!showAllTags)}
+            className="text-xs text-gray-400 hover:text-white mt-3 flex items-center mx-auto"
+          >
+            {showAllTags ? "Less Tags" : "More Tags"}
+            <ChevronDown
+              size={16}
+              className={`inline ml-1 transform transition-transform ${
+                showAllTags ? "rotate-180" : ""
+              }`}
+            />
+          </button>
         )}
       </div>
+
       <hr className="border-slate-700 my-5" />
-      {/* Filter Area dengan Dropdown Kustom */}
-      <div className="flex items-center justify-between gap-3">
+
+      {/* Filter Area with Custom Dropdown */}
+      <div className="flex items-center justify-between gap-3 border border-slate-700 p-2 rounded-md">
         <span className="block text-sm font-medium text-gray-300 flex-shrink-0">
           Area:
         </span>
-        <div className="relative flex-grow" ref={areaDropdownRef}> {/* `ref` dipasang di sini */}
-          {/* Tombol Pemicu Dropdown */}
+        <div className="relative flex-grow" ref={areaDropdownRef}>
+          {/* Dropdown Trigger Button */}
           <button
             type="button"
             onClick={() => setIsAreaDropdownOpen(!isAreaDropdownOpen)}
-            // Styling tombol pemicu
-            className="w-full flex items-center justify-between text-left px-3 py-2 bg-[#374151] border border-slate-600/80 text-gray-200 hover:bg-slate-600/80 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 rounded-md text-sm"
+            className={areaDropdownButtonStyle}
           >
-            <span className="truncate">{selectedArea || "Semua Area"}</span> {/* Menampilkan "Semua Area" jika selectedArea kosong */}
-            <ChevronDown 
-              size={16} 
+            {/* Tampilkan selectedArea, jika null/kosong bisa diset ke default 'Semua Area' */}
+            <span className="truncate">{selectedArea || "Semua Area"}</span>
+            <ChevronDown
+              size={16}
               className={`ml-1 text-gray-400 flex-shrink-0 transition-transform duration-200 ${
-                isAreaDropdownOpen ? 'transform rotate-180' : ''
-              }`} 
+                isAreaDropdownOpen ? "transform rotate-180" : ""
+              }`}
             />
           </button>
-          
-          {/* Menu Dropdown */}
+
+          {/* Dropdown Menu */}
           {isAreaDropdownOpen && (
-            <ul 
-              // w-full agar lebar menu dropdown sama dengan tombol pemicunya
-              className="absolute right-0 mt-1 w-full bg-[#2A3547] border border-slate-700 rounded-md shadow-lg z-50 p-1 max-h-60 overflow-y-auto"
-            >
-              {areaOptions.map(area => ( // areaOptions sekarang termasuk "Semua Area"
-                (<li key={area}>
+            <ul className={areaDropdownMenuStyle}>
+              {areaOptions.map((area) => (
+                <li key={area}>
                   <button
                     type="button"
                     className={`w-full text-left text-sm px-3 py-2 rounded-md block ${
-                      selectedArea === area // Item aktif di dropdown
-                        ? 'bg-blue-600 text-white' 
-                        : 'text-gray-300 hover:bg-slate-700/60'
+                      selectedArea === area
+                        ? "bg-blue-600 text-white" // Gaya untuk item yang aktif
+                        : "text-gray-300 hover:bg-[#374151]" // Warna hover untuk item tidak aktif
                     }`}
                     onClick={() => handleAreaSelect(area)}
                   >
                     {area}
                   </button>
-                </li>)
+                </li>
               ))}
             </ul>
           )}
