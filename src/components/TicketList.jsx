@@ -40,7 +40,7 @@ export default function TicketList() {
           <Link
             href="/tiket"
             className="text-md text-black font-medium flex items-center gap-1 relative top-47"
-            legacyBehavior>
+          >
             View all{" "}
             <span className="text-md">
               <MoveRight size={20} />

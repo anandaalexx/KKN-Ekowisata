@@ -42,7 +42,7 @@ export default function Activity() {
           <Link
             href="#"
             className="text-black font-medium hover:underline flex items-center gap-1 relative top-4"
-            legacyBehavior>
+          >
             View all{" "}
             <span>
               <MoveRight size={16} />

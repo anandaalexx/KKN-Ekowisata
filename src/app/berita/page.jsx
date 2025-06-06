@@ -1,10 +1,12 @@
 // src/pages/DokumenterPage.jsx (atau path yang sesuai, misal app/berita/page.jsx atau app/florafauna/page.jsx jika ini adalah halaman listnya)
 "use client";
-import React from 'react';
-import SearchNavbar from '@/components/SearchNavbar'; // Sesuaikan path jika perlu
-import DokumenterCard from '@/components/DocumentaryCard';// Pastikan nama komponen dan path ini benar
-import Link from 'next/link';
-import { usePathname, useRouter } from 'next/navigation'; // 1. Impor useRouter dan usePathname
+import React from "react";
+import Image from "next/image";
+import SearchNavbar from "@/components/SearchNavbar"; // Sesuaikan path jika perlu
+import DokumenterCard from "@/components/DocumentaryCard"; // Pastikan nama komponen dan path ini benar
+import Footer from "@/components/Footer";
+import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation"; // 1. Impor useRouter dan usePathname
 
 // Contoh data untuk halaman dokumenter
 const dokumenterData = [
@@ -13,24 +15,26 @@ const dokumenterData = [
     image: "/images/gambarberita.png",
     title: "Animal Feeding",
     location: "Lorem Ipsum",
-    summary: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
+    summary:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
     listItems: [
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-    ]
+    ],
   },
   {
     id: 2,
     image: "/images/gambarberita.png",
     title: "Another Animal Story",
     location: "Somewhere Else",
-    summary: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.",
+    summary:
+      "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.",
     listItems: [
       "Sed ut perspiciatis unde omnis iste natus error.",
       "Nemo enim ipsam voluptatem quia voluptas sit.",
       "Neque porro quisquam est, qui dolorem ipsum.",
-    ]
+    ],
   },
   // Tambahkan data dokumenter lainnya di sini
 ];
@@ -49,85 +53,74 @@ export default function DokumenterPage() {
     router.push(`/berita/${id}`);
   };
 
-  // Definisikan item tab
   const tabItems = [
-    // Sesuaikan href ini dengan struktur routing Anda yang sebenarnya
-    { name: "Flora & Fauna", href: "/florafauna" }, // Ini mungkin halaman list untuk Flora & Fauna
-    { name: "Documentary", href: "/berita" }      // Ini mungkin halaman list untuk Berita/Documentary
+    { name: "Flora & Fauna", href: "/florafauna" },
+    { name: "Documentary", href: "/berita" },
   ];
 
   return (
-    <div
-      className="min-h-screen relative"
-      style={{
-        backgroundImage: "url('/images/siluetdokumenter.png')",
-        backgroundSize: 'cover',
-        backgroundRepeat: 'no-repeat',
-        backgroundPosition: 'bottom center',
-        backgroundColor: '#f9fafb', // fallback bg-gray-50
-      }}
-    >
-      <SearchNavbar />
+    <>
+      <div className="min-h-screen relative bg-white">
+        <SearchNavbar />
 
-      <main className="container mx-auto px-4 py-8 relative z-10">
-        {/* BAGIAN NAVIGASI TAB */}
-        <div className="mb-8 flex justify-center items-center py-2 space-x-0 md:space-x-1">
-          {tabItems.map((tab) => {
-            // Logika isActive mungkin perlu disesuaikan jika halaman detail memiliki path yang sama
-            // Misalnya, jika /berita/dokumenter/1 aktif, tab "Documentary" (/berita) juga akan aktif.
-            // Jika Anda ingin tab hanya aktif di halaman listnya, Anda bisa menggunakan:
-            // const isActive = pathname === tab.href;
-            // Jika Anda ingin tab tetap aktif saat di halaman detail yang bersangkutan:
-            const isActive = pathname.startsWith(tab.href);
+        <main className="max-w-7xl mx-auto py-8 relative z-10">
+          {/* BAGIAN NAVIGASI TAB */}
+          <div className="mb-8 flex justify-center items-center py-2 space-x-0 md:space-x-1">
+            {tabItems.map((tab) => {
+              // Logika isActive mungkin perlu disesuaikan jika halaman detail memiliki path yang sama
+              // Misalnya, jika /berita/dokumenter/1 aktif, tab "Documentary" (/berita) juga akan aktif.
+              // Jika Anda ingin tab hanya aktif di halaman listnya, Anda bisa menggunakan:
+              // const isActive = pathname === tab.href;
+              // Jika Anda ingin tab tetap aktif saat di halaman detail yang bersangkutan:
+              const isActive = pathname.startsWith(tab.href);
 
-
-            return (
-              <Link key={tab.name} href={tab.href} legacyBehavior>
-                <a
+              return (
+                <Link
+                  key={tab.name}
+                  href={tab.href}
                   className={`
-                    py-2.5 px-4 sm:px-6 focus:outline-none rounded-md
-                    text-sm font-medium transition-all duration-200 ease-in-out
-                    ${
-                      isActive
-                        ? 'bg-[#13564C] text-white shadow-md'
-                        : 'text-gray-400 hover:text-white hover:bg-gray-700/50'
-                    }
-                  `}
+                  py-2.5 px-4 sm:px-6 focus:outline-none rounded-md
+                  text-sm font-medium transition-all duration-200 ease-in-out
+                  ${
+                    isActive
+                      ? "bg-[#13564C] text-white shadow-md"
+                      : "text-gray-400 hover:text-white hover:bg-gray-700/50"
+                  }
+                `}
                 >
                   {tab.name}
-                </a>
-              </Link>
-            );
-          })}
-        </div>
+                </Link>
+              );
+            })}
+          </div>
 
-        {/* Konten Daftar Dokumenter */}
-        <div className="space-y-10 flex flex-col items-center">
-          {dokumenterData.map((doc) => (
-            <DokumenterCard
-              key={doc.id}
-              image={doc.image}
-              title={doc.title}
-              location={doc.location}
-              summary={doc.summary}
-              listItems={doc.listItems}
-              onReadMore={() => handleReadMore(doc.id)} // Pastikan ini memanggil fungsi yang sudah diupdate
-            />
-          ))}
-        </div>
-      </main>
+          {/* Konten Daftar Dokumenter */}
+          <div className="space-y-10 flex flex-col items-center">
+            {dokumenterData.map((doc) => (
+              <DokumenterCard
+                key={doc.id}
+                image={doc.image}
+                title={doc.title}
+                location={doc.location}
+                summary={doc.summary}
+                listItems={doc.listItems}
+                onReadMore={() => handleReadMore(doc.id)} // Pastikan ini memanggil fungsi yang sudah diupdate
+              />
+            ))}
+          </div>
+        </main>
 
-      {/* Background siluetdokumenter.png di bawah */}
-      <div
-        className="absolute bottom-0 left-0 w-full h-64 pointer-events-none z-0"
-        style={{
-          backgroundImage: "url('/images/siluetdokumenter.png')", // Pastikan path ini benar di folder public
-          backgroundSize: 'cover',
-          backgroundRepeat: 'no-repeat',
-          backgroundPosition: 'bottom center',
-          opacity: 0.7,
-        }}
-      />
-    </div>
+        <div className="absolute inset-0 w-full h-full top-100 z-0">
+          <Image
+            src="/images/bg-documenter.svg"
+            alt="Vektor Background"
+            width={1440}
+            height={1000}
+            className="w-full object-cover"
+          />
+        </div>
+      </div>
+      <Footer />
+    </>
   );
 }

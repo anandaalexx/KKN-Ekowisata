@@ -29,7 +29,7 @@ export default function Hero() {
         <Link
           href="/tiket"
           className="w-fit inline-flex items-center gap-2 mt-6 bg-[#538048] hover:brightness-90 text-white text-md font-semibold px-2 py-1 rounded shadow-lg transition"
-          legacyBehavior>
+        >
           <Ticket size={16} /> Buy Ticket
         </Link>
       </div>

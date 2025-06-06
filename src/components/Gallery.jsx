@@ -28,7 +28,7 @@ export default function Gallery() {
         <Link
           href="#"
           className="text-black font-medium hover:underline flex items-center gap-1 relative top-6"
-          legacyBehavior>
+        >
           View all{" "}
           <span>
             <MoveRight size={16} />

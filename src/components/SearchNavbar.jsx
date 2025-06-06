@@ -46,7 +46,7 @@ export default function SearchNavbar() {
     <nav className="shadow-sm sticky top-0 z-50" style={{ backgroundColor }}>
       <div className="max-w-7xl mx-auto py-4 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="w-34 h-auto" legacyBehavior>
+        <Link href="/" className="w-34 h-auto">
           <Image
             src={logoSrc}
             alt="Logo Mini Zoo"
@@ -86,7 +86,7 @@ export default function SearchNavbar() {
         >
           {menuItems.map((item, index) => (
             <li key={index}>
-              <Link href={item.href} className="hover:brightness-110" legacyBehavior>
+              <Link href={item.href} className="hover:brightness-110">
                 {item.label}
               </Link>
             </li>
