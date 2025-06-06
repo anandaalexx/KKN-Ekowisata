@@ -15,7 +15,6 @@ export default function DokumenterCard({
     // Wadah utama sekarang hanya untuk layout flex, tanpa styling kartu.
     // Styling seperti background putih dan shadow akan datang dari parent di halaman.
     <div className="flex flex-col md:flex-row w-full overflow-hidden p-4 sm:p-6"> {/* Padding ditambahkan di sini untuk konten internal */}
-      
       {/* Bagian Gambar */}
       {/* aspect-video untuk mobile, md:aspect-auto agar bisa menyesuaikan tinggi di desktop */}
       {/* md:h-full bisa ditambahkan jika ingin gambar mengisi tinggi penuh di desktop jika teks lebih panjang */}
@@ -28,7 +27,6 @@ export default function DokumenterCard({
           className="transition-transform duration-300 ease-in-out hover:scale-105"
         />
       </div>
-
       {/* Bagian Info Teks */}
       <div className="w-full md:w-[65%] lg:w-[70%] md:pl-6 mt-4 md:mt-0 flex flex-col justify-between">
         <div>
@@ -49,10 +47,10 @@ export default function DokumenterCard({
           <div className="space-y-1 text-sm text-gray-700 mb-4">
             {(listItems && listItems.length > 0) ? (
               listItems.slice(0, 3).map((item, index) => ( // Tampilkan maks 3 item
-                <div key={index} className="flex items-start">
+                (<div key={index} className="flex items-start">
                   <Play size={15} className="w-3.5 h-3.5 mr-2 mt-[3px] text-green-600 flex-shrink-0" fill="currentColor" />
                   <span className="flex-1">{item}</span>
-                </div>
+                </div>)
               ))
             ) : (
             <p className="text-xs text-gray-400 italic">Tidak ada detail tambahan.</p>

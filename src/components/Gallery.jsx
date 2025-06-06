@@ -15,7 +15,6 @@ export default function Gallery() {
         className="absolute ml-4 opacity-30 -mt-85 h-full w-auto max-w-[390px] z-0 pointer-events-none"
         style={{ objectFit: "contain" }}
       />
-
       <div className="flex max-w-7xl mx-auto justify-between items-center mb-8 relative z-10">
         <div>
           <h2 className="text-3xl md:text-5xl font-medium text-black">
@@ -29,14 +28,13 @@ export default function Gallery() {
         <Link
           href="#"
           className="text-black font-medium hover:underline flex items-center gap-1 relative top-6"
-        >
+          legacyBehavior>
           View all{" "}
           <span>
             <MoveRight size={16} />
           </span>
         </Link>
       </div>
-
       <div className="grid grid-cols-4 gap-4 auto-rows-[200px] max-w-7xl mx-auto relative z-10">
         {/* Baris pertama */}
         <div className="col-span-2 row-span-2 relative rounded-lg overflow-hidden">

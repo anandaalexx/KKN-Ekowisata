@@ -78,7 +78,7 @@ export default function ArticleDetailPage() {
                 <Link
                   href={crumb.href}
                   className="hover:text-gray-100 hover:underline"
-                >
+                  legacyBehavior>
                   {crumb.name}
                 </Link>
               </li>

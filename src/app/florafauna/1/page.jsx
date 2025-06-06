@@ -72,14 +72,16 @@ export default function RhinocerosDetailPage() {
       }}
     >
       <SearchNavbar />
-
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6">
         <nav aria-label="Breadcrumb" className="mb-6 text-sm">
           <ol className="flex items-center space-x-1.5 text-gray-400">
             {rhinoData.breadcrumb.map((crumb, index) => (
               <li key={crumb.name} className="flex items-center">
                 {index > 0 && <ChevronRight size={14} className="mx-1.5" />}
-                <Link href={crumb.href} className="hover:text-gray-100 hover:underline">
+                <Link
+                  href={crumb.href}
+                  className="hover:text-gray-100 hover:underline"
+                  legacyBehavior>
                   {crumb.name}
                 </Link>
               </li>
@@ -151,7 +153,7 @@ export default function RhinocerosDetailPage() {
             <div className="space-y-4 text-sm sm:text-base leading-relaxed text-gray-300 prose prose-sm prose-invert max-w-none"> {/* Styling prose untuk teks */}
               {(rhinoData.content[activeTab] || ["Konten tidak tersedia."]).map((paragraph, index) => (
                 // Render paragraf, sitasi akan di-style oleh prose-invert
-                <p key={index} dangerouslySetInnerHTML={{ __html: paragraph.replace(/\[(\d+)\]/g, '<sup>[$1]</sup>') }} />
+                (<p key={index} dangerouslySetInnerHTML={{ __html: paragraph.replace(/\[(\d+)\]/g, '<sup>[$1]</sup>') }} />)
               ))}
             </div>
           </div>

@@ -9,7 +9,7 @@ export default function Navbar() {
     <nav className="bg-white shadow-sm sticky top-0 z-50">
       <div className="max-w-7xl mx-auto py-4 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="w-34 h-auto">
+        <Link href="/" className="w-34 h-auto" legacyBehavior>
           <Image
             src="/images/logo.png"
             alt="Logo Mini Zoo"

@@ -55,7 +55,6 @@ export default function FilterPanel() {
 
   return (
     <div className="w-full lg:w-72 bg-[#26303E] p-5 rounded-xl shadow-lg h-fit sticky top-24 font-inter text-white">
-      
       <div className="relative mb-6">
         <Search size={20} className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none" />
         <input 
@@ -64,7 +63,6 @@ export default function FilterPanel() {
           className="input w-full pl-12 pr-4 py-3 bg-[#374151] border-none text-gray-200 placeholder-gray-400 focus:ring-1 focus:ring-blue-500 rounded-md text-sm transition-colors" 
         />
       </div>
-
       <div className="flex items-center justify-center mb-5 space-x-1">
         <button 
           onClick={() => setActiveToggle('flora')}
@@ -83,7 +81,6 @@ export default function FilterPanel() {
           Fauna
         </button>
       </div>
-
       <div className="mb-6">
         <div className="flex flex-wrap gap-2 items-center justify-center">
           {displayedTags.map(tag => (
@@ -108,9 +105,7 @@ export default function FilterPanel() {
             </button>
         )}
       </div>
-      
       <hr className="border-slate-700 my-5" />
-
       {/* Filter Area dengan Dropdown Kustom */}
       <div className="flex items-center justify-between gap-3">
         <span className="block text-sm font-medium text-gray-300 flex-shrink-0">
@@ -140,7 +135,7 @@ export default function FilterPanel() {
               className="absolute right-0 mt-1 w-full bg-[#2A3547] border border-slate-700 rounded-md shadow-lg z-50 p-1 max-h-60 overflow-y-auto"
             >
               {areaOptions.map(area => ( // areaOptions sekarang termasuk "Semua Area"
-                <li key={area}>
+                (<li key={area}>
                   <button
                     type="button"
                     className={`w-full text-left text-sm px-3 py-2 rounded-md block ${
@@ -152,7 +147,7 @@ export default function FilterPanel() {
                   >
                     {area}
                   </button>
-                </li>
+                </li>)
               ))}
             </ul>
           )}

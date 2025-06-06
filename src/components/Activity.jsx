@@ -28,7 +28,6 @@ export default function Activity() {
         height={160}
         className="absolute right-0 bottom-0 w-109 hidden md:block"
       />
-
       <div className="relative z-10 max-w-7xl mx-auto">
         <div className="flex justify-between items-center mb-8">
           <div>
@@ -43,7 +42,7 @@ export default function Activity() {
           <Link
             href="#"
             className="text-black font-medium hover:underline flex items-center gap-1 relative top-4"
-          >
+            legacyBehavior>
             View all{" "}
             <span>
               <MoveRight size={16} />
