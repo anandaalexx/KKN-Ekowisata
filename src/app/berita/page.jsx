@@ -6,7 +6,8 @@ import SearchNavbar from "@/components/SearchNavbar"; // Sesuaikan path jika per
 import DokumenterCard from "@/components/DocumentaryCard"; // Pastikan nama komponen dan path ini benar
 import Footer from "@/components/Footer";
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation"; // 1. Impor useRouter dan usePathname
+import { usePathname, useRouter } from "next/navigation";
+import TabNavigation from "@/components/TabNavigation";
 
 // Contoh data untuk halaman dokumenter
 const dokumenterData = [
@@ -53,11 +54,6 @@ export default function DokumenterPage() {
     router.push(`/berita/${id}`);
   };
 
-  const tabItems = [
-    { name: "Flora & Fauna", href: "/florafauna" },
-    { name: "Documentary", href: "/berita" },
-  ];
-
   return (
     <>
       <div className="min-h-screen relative bg-white">
@@ -65,34 +61,7 @@ export default function DokumenterPage() {
 
         <main className="max-w-7xl mx-auto py-8 relative z-10">
           {/* BAGIAN NAVIGASI TAB */}
-          <div className="mb-8 flex justify-center items-center py-2 space-x-0 md:space-x-1">
-            {tabItems.map((tab) => {
-              // Logika isActive mungkin perlu disesuaikan jika halaman detail memiliki path yang sama
-              // Misalnya, jika /berita/dokumenter/1 aktif, tab "Documentary" (/berita) juga akan aktif.
-              // Jika Anda ingin tab hanya aktif di halaman listnya, Anda bisa menggunakan:
-              // const isActive = pathname === tab.href;
-              // Jika Anda ingin tab tetap aktif saat di halaman detail yang bersangkutan:
-              const isActive = pathname.startsWith(tab.href);
-
-              return (
-                <Link
-                  key={tab.name}
-                  href={tab.href}
-                  className={`
-                  py-2.5 px-4 sm:px-6 focus:outline-none rounded-md
-                  text-sm font-medium transition-all duration-200 ease-in-out
-                  ${
-                    isActive
-                      ? "bg-[#13564C] text-white shadow-md"
-                      : "text-gray-400 hover:text-white hover:bg-gray-700/50"
-                  }
-                `}
-                >
-                  {tab.name}
-                </Link>
-              );
-            })}
-          </div>
+          <TabNavigation />
 
           {/* Konten Daftar Dokumenter */}
           <div className="space-y-10 flex flex-col items-center">
@@ -104,14 +73,13 @@ export default function DokumenterPage() {
                 location={doc.location}
                 summary={doc.summary}
                 listItems={doc.listItems}
-                onReadMore={() => handleReadMore(doc.id)} // Pastikan ini memanggil fungsi yang sudah diupdate
+                onReadMore={() => handleReadMore(doc.id)}
               />
             ))}
           </div>
         </main>
-
         <div
-          className="absolute inset-0 w-full h-full bg-bottom bg-no-repeat bg-contain z-10"
+          className="absolute inset-0 w-full h-full bg-bottom bg-no-repeat bg-contain z-0"
           style={{ backgroundImage: "url('/images/bg-documenter.svg')" }}
         />
       </div>

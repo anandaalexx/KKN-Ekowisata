@@ -8,9 +8,11 @@ import {
   Twitter,
 } from "lucide-react";
 
-export default function Footer() {
+export default function Footer({ className }) {
   return (
-    <footer className="bg-[#135449] text-white px-6 md:px-12 py-12">
+    <footer
+      className={`bg-[#135449] text-white px-6 md:px-12 py-12 ${className}`}
+    >
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">
         {/* Column 1 - Brand Info */}
         <div>

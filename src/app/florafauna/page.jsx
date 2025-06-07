@@ -1,13 +1,14 @@
-// src/pages/FloraFaunaPage.jsx (atau app/berita/florafauna/page.jsx)
 "use client";
 import React from "react";
 import SearchNavbar from "@/components/SearchNavbar";
 import FloraFaunaCard from "@/components/FloraFaunaCard";
 import FilterPanel from "@/components/FilterPanel";
-import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import TabNavigation from "@/components/TabNavigation";
+import Footer from "@/components/Footer";
+import { useRouter } from "next/navigation";
 
 const itemsData = [
+  // ... (data Anda tidak diubah) ...
   {
     id: 1,
     image: "/images/gambarflooora.png",
@@ -116,83 +117,58 @@ const itemsData = [
 ];
 
 export default function FloraFaunaPage() {
-  const pathname = usePathname();
   const router = useRouter();
 
   const handleCardClick = (itemName) => {
-    console.log("Navigating to details for:", itemName);
-    router.push(`/florafauna/1`);
+    const selectedItem = itemsData.find((item) => item.name === itemName);
+    if (selectedItem) {
+      router.push(`/florafauna/${selectedItem.id}`);
+    }
   };
 
-  const tabItems = [
-    { name: "Flora & Fauna", href: "/florafauna" },
-    { name: "Documentary", href: "/berita" },
-  ];
-
   return (
-    <div
-      className="min-h-screen bg-bottom bg-no-repeat bg-cover"
-      style={{ backgroundImage: "url('/images/bgflora.png')" }}
-    >
-      <SearchNavbar />
+    <div className="relative flex flex-col min-h-screen bg-[#154540] overflow-x-hidden">
+      {/* Latar belakang 'fixed' untuk selalu menempel di viewport */}
+      <div
+        // Hapus 'top-40' dan 'h-screen'
+        className="absolute inset-0 w-full h-full bg-bottom bg-no-repeat bg-cover z-0"
+        style={{ backgroundImage: "url('/images/bgflora.png')" }}
+      />
 
-      {/* Konten utama dengan lebar maksimal 7xl dan responsif */}
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 max-w-7xl">
-        <div className="mb-8 flex justify-center items-center py-2 space-x-0 md:space-x-1">
-          {tabItems.map((tab) => {
-            const isActive =
-              pathname === tab.href ||
-              (tab.href === "/florafauna" &&
-                pathname.startsWith("/berita/florafauna"));
+      {/* Konten halaman dengan z-index di atas background */}
+      <div className="relative z-10 flex flex-col flex-grow w-full">
+        <SearchNavbar />
 
-            return (
-              <Link
-                key={tab.name}
-                href={tab.href}
-                className={`
-                  py-2.5 px-4 sm:px-6 focus:outline-none rounded-md
-                  text-sm font-medium transition-all duration-200 ease-in-out
-                  ${
-                    isActive
-                      ? "bg-white text-[#13564C] shadow-md"
-                      : "text-gray-300 hover:text-white hover:bg-gray-700/50"
-                  }
-                `}
-              >
-                {tab.name}
-              </Link>
-            );
-          })}
-        </div>
+        <main className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 max-w-7xl flex-grow">
+          <TabNavigation />
 
-        <div className="flex flex-col lg:flex-row gap-8">
-          <div className="w-full lg:w-auto lg:sticky lg:top-20 self-start">
-            <FilterPanel />
-          </div>
+          <div className="flex flex-col lg:flex-row gap-10 mt-8">
+            <aside className="w-full lg:w-64 lg:sticky lg:top-28 self-start">
+              <FilterPanel />
+            </aside>
 
-          <div className="flex-1">
-            {/* Grid untuk 3 kartu per baris */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 -mr-3 bg-black/20">
-              {itemsData.map((item) => (
-                <FloraFaunaCard
-                  key={item.id}
-                  image={item.image}
-                  name={item.name}
-                  line1={item.line1}
-                  line2={item.line2}
-                  onClick={() => handleCardClick(item.name)}
-                />
-              ))}
+            <div className="flex-1 bg-black/35 rounded-md">
+              {itemsData.length > 0 ? (
+                <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
+                  {itemsData.map((item) => (
+                    <FloraFaunaCard
+                      key={item.id}
+                      {...item} // Menggunakan spread operator untuk passing props
+                      onClick={() => handleCardClick(item.name)}
+                    />
+                  ))}
+                </div>
+              ) : (
+                <div className="text-center py-10 text-gray-300">
+                  Tidak ada item flora & fauna untuk ditampilkan saat ini.
+                </div>
+              )}
             </div>
-            {itemsData.length === 0 && (
-              <div className="col-span-full text-center py-10 text-gray-400">
-                Tidak ada item flora & fauna untuk ditampilkan saat ini.
-              </div>
-            )}
           </div>
-        </div>
+        </main>
       </div>
-      {/* <Footer /> */}
+
+      <Footer className="relative z-10" />
     </div>
   );
 }
