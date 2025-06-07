@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState, useEffect } from "react"; // 1. Impor useState dan useEffect
 import Image from "next/image";
 import SearchNavbar from "@/components/SearchNavbar";
 import DokumenterCard from "@/components/DocumentaryCard";
@@ -38,16 +38,22 @@ const dokumenterData = [
 ];
 
 export default function DokumenterPage() {
-  const pathname = usePathname();
   const router = useRouter();
 
-  // 3. Modifikasi handleReadMore untuk navigasi
+  // 2. Buat state untuk mengontrol animasi
+  const [isMounted, setIsMounted] = useState(false);
+
+  // 3. Gunakan useEffect untuk mengubah state setelah komponen dimuat
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsMounted(true);
+    }, 100); // jeda 100ms
+
+    return () => clearTimeout(timer); // Membersihkan timer
+  }, []); // Hanya berjalan sekali saat komponen dimuat
+
   const handleReadMore = (id) => {
     console.log("Navigating to details for ID:", id);
-    // Tentukan path halaman detail Anda. Sesuaikan '/berita/dokumenter/' jika perlu.
-    // Misalnya, jika tab "Documentary" aktif, mungkin Anda ingin '/berita/dokumenter/[id]'
-    // Jika tab "Flora & Fauna" aktif dan dokumenter ada di sana, path-nya bisa berbeda.
-    // Untuk contoh ini, saya asumsikan semua detail dokumenter ada di bawah '/berita/dokumenter/'
     router.push(`/berita/${id}`);
   };
 
@@ -57,11 +63,20 @@ export default function DokumenterPage() {
         <SearchNavbar />
 
         <main className="max-w-7xl mx-auto py-8 relative z-10">
-          {/* BAGIAN NAVIGASI TAB */}
           <TabNavigation />
 
-          {/* Konten Daftar Dokumenter */}
-          <div className="space-y-10 flex flex-col items-center">
+          {/* 4. Terapkan kelas animasi pada Konten Daftar Dokumenter */}
+          <div
+            className={`
+              space-y-10 flex flex-col items-center
+              transition-all duration-1000 ease-out
+              ${
+                isMounted
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-12"
+              }
+            `}
+          >
             {dokumenterData.map((doc) => (
               <DokumenterCard
                 key={doc.id}
