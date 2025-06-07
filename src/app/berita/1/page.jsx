@@ -97,7 +97,7 @@ export default function ArticleDetailPage() {
                 alt={articleData.title}
                 layout="fill"
                 objectFit="cover"
-                priority // Tambahkan priority untuk LCP (Largest Contentful Paint)
+                priority
               />
             </div>
 

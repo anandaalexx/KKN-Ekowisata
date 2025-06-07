@@ -1,15 +1,13 @@
-// src/pages/DokumenterPage.jsx (atau path yang sesuai, misal app/berita/page.jsx atau app/florafauna/page.jsx jika ini adalah halaman listnya)
 "use client";
 import React from "react";
 import Image from "next/image";
-import SearchNavbar from "@/components/SearchNavbar"; // Sesuaikan path jika perlu
-import DokumenterCard from "@/components/DocumentaryCard"; // Pastikan nama komponen dan path ini benar
+import SearchNavbar from "@/components/SearchNavbar";
+import DokumenterCard from "@/components/DocumentaryCard";
 import Footer from "@/components/Footer";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import TabNavigation from "@/components/TabNavigation";
 
-// Contoh data untuk halaman dokumenter
 const dokumenterData = [
   {
     id: 1,
@@ -37,12 +35,11 @@ const dokumenterData = [
       "Neque porro quisquam est, qui dolorem ipsum.",
     ],
   },
-  // Tambahkan data dokumenter lainnya di sini
 ];
 
 export default function DokumenterPage() {
   const pathname = usePathname();
-  const router = useRouter(); // 2. Inisialisasi router
+  const router = useRouter();
 
   // 3. Modifikasi handleReadMore untuk navigasi
   const handleReadMore = (id) => {

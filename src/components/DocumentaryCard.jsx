@@ -81,7 +81,7 @@ export default function DokumenterCard({
 
           <button
             onClick={onReadMore}
-            className="w-[170px] rounded-lg btn btn-sm bg-[#13564C] hover:bg-green-700 text-white self-start normal-case font-medium px-4 py-2 group mt-16 flex justify-center items-center transition-all duration-200"
+            className="w-[170px] rounded-lg btn btn-sm bg-[#13564C] hover:bg-green-700 text-white self-start normal-case font-medium px-4 py-2 group mt-16 flex justify-center items-center transition-all duration-200 cursor-pointer"
           >
             Read more
             <div className="flex items-center ml-1.5 sm:ml-2">

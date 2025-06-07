@@ -1,5 +1,7 @@
 // src/pages/Tiket.jsx
-import React from "react";
+"use client"; // Diperlukan untuk menggunakan hooks
+
+import React, { useState, useEffect } from "react"; // 1. Impor useState dan useEffect
 import SearchNavbar from "@/components/SearchNavbar";
 import TicketCard from "@/components/TicketCard";
 import Footer from "@/components/Footer";
@@ -24,7 +26,7 @@ const ticketsData = [
     descriptionParagraph:
       "Saksikan kegagahan beruang grizzly di habitat alaminya yang luas dan pelajari fakta menarik tentang mereka.",
     descriptionList: [
-      "Area beruang yang aman", // "Pertunjukan" atau "Display"
+      "Area beruang yang aman",
       "Informasi tentang jenis-jenis beruang",
       "Program adopsi simbolis beruang",
     ],
@@ -44,17 +46,27 @@ const ticketsData = [
 ];
 
 export default function Tiket() {
+  // 2. Buat state untuk mengontrol animasi
+  const [isMounted, setIsMounted] = useState(false);
+
+  // 3. Gunakan useEffect untuk mengubah state setelah komponen dimuat
+  useEffect(() => {
+    // Memberi sedikit jeda sebelum animasi dimulai agar transisi berjalan mulus
+    const timer = setTimeout(() => {
+      setIsMounted(true);
+    }, 100); // jeda 100ms
+
+    return () => clearTimeout(timer); // Membersihkan timer saat komponen di-unmount
+  }, []); // Array kosong memastikan ini hanya berjalan sekali saat komponen pertama kali dimuat
+
   return (
     <>
       <div className="relative min-h-[1050px]">
-        {/* Base putih di paling belakang */}
         <div className="absolute inset-0 w-full h-full bg-white z-0" />
-        {/* Lapisan background gambar */}
         <div
           className="absolute inset-0 w-full h-full bg-bottom bg-no-repeat bg-contain z-10"
           style={{ backgroundImage: "url('/images/bg-tiket.svg')" }}
         />
-        {/* Konten utama */}
         <div className="relative z-20">
           <SearchNavbar />
           <main className="px-2 sm:px-8 py-8 flex flex-col items-center">
@@ -67,8 +79,19 @@ export default function Tiket() {
             >
               Ticket Pricelist
             </h1>
-            {/* Wadah untuk kartu tiket */}
-            <div className="flex flex-wrap justify-center items-stretch gap-x-8 gap-y-10 w-full max-w-6xl xl:max-w-7xl">
+
+            {/* Wadah untuk kartu tiket dengan kelas animasi */}
+            <div
+              className={`
+                flex flex-wrap justify-center items-stretch gap-x-8 gap-y-10 w-full max-w-6xl xl:max-w-7xl
+                transition-all duration-1000 ease-out
+                ${
+                  isMounted
+                    ? "opacity-100 translate-y-0"
+                    : "opacity-0 translate-y-12"
+                }
+              `}
+            >
               {ticketsData.map((ticket) => (
                 <TicketCard
                   key={ticket.name}
