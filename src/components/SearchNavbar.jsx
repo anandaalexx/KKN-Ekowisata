@@ -28,13 +28,13 @@ export default function SearchNavbar() {
       ? [
           { label: "Home", href: "/" },
           { label: "Berita", href: "/berita" },
-          { label: "Flora & Fauna", href: "/flora-fauna" },
+          { label: "Flora & Fauna", href: "/florafauna" },
         ]
       : pathname === "/berita"
       ? [
           { label: "Home", href: "/" },
           { label: "Tiket", href: "/tiket" },
-          { label: "Flora & Fauna", href: "/flora-fauna" },
+          { label: "Flora & Fauna", href: "/florafauna" },
         ]
       : [
           { label: "Home", href: "/" },
@@ -44,44 +44,51 @@ export default function SearchNavbar() {
 
   return (
     <nav className="shadow-sm sticky top-0 z-50" style={{ backgroundColor }}>
-      <div className="max-w-7xl mx-auto py-4 flex items-center justify-between">
+      {/* Ganti padding horizontal (px) di container utama */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between gap-x-4 md:gap-x-12">
         {/* Logo */}
-        <Link href="/" className="w-34 h-auto">
+        <Link href="/" className="flex-shrink-0">
           <Image
             src={logoSrc}
             alt="Logo Mini Zoo"
             width={192}
             height={72}
-            className="h-auto w-full"
+            className="h-auto w-32 md:w-48" // Lebar logo responsif
             priority
           />
         </Link>
 
-        {/* Search bar */}
-        <div className="flex flex-1 max-w-lg -ml-24">
-          <div className="flex items-center bg-[#1C1B1F] text-white rounded-xl w-full overflow-hidden">
-            <span className="p-3">
-              <Search className="w-5 h-5 text-[#CAC4D0] cursor-pointer hover:brightness-90" />
-            </span>
-            <input
-              type="text"
-              placeholder="Search animals"
-              className="bg-transparent text-sm w-full focus:outline-none placeholder:text-[#49454F]"
-            />
-            <span className="p-3">
-              <ScanLine className="w-5 h-5 text-[#CAC4D0] cursor-pointer hover:brightness-90" />
-            </span>
+        {/* Kelompok Tengah: Search Bar dan Filter Icon */}
+        <div className="flex flex-1 justify-center items-center gap-x-3">
+          {/* Search bar */}
+          <div className="flex flex-1 max-w-lg">
+            <div className="flex items-center bg-[#1C1B1F] text-white rounded-xl w-full overflow-hidden">
+              <span className="p-3">
+                <Search className="w-5 h-5 text-[#CAC4D0] cursor-pointer hover:brightness-90" />
+              </span>
+              <input
+                type="text"
+                placeholder="Search animals"
+                className="bg-transparent text-sm w-full focus:outline-none placeholder:text-[#49454F]"
+              />
+              <span className="p-3">
+                <ScanLine className="w-5 h-5 text-[#CAC4D0] cursor-pointer hover:brightness-90" />
+              </span>
+            </div>
           </div>
+
+          {/* Menu icon (Filter) */}
+          <button className="bg-[#211F26] p-3 rounded-xl">
+            <ListFilter className="w-5 h-5 text-[#CAC4D0] cursor-pointer hover:brightness-90" />
+          </button>
         </div>
 
-        {/* Menu icon */}
-        <button className="bg-[#211F26] p-3 rounded-xl -ml-58">
-          <ListFilter className="w-5 h-5 text-[#CAC4D0] cursor-pointer hover:brightness-90" />
-        </button>
-
-        {/* Menu dinamis */}
+        {/* Menu dinamis (Navigasi Kanan) */}
         <ul
-          className={clsx("flex space-x-8 font-semibold text-lg", textColor)}
+          className={clsx(
+            "hidden md:flex items-center space-x-8 font-semibold text-2xl",
+            textColor
+          )}
           style={{ textColor }}
         >
           {menuItems.map((item, index) => (
