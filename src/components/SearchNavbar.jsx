@@ -9,13 +9,14 @@ import clsx from "clsx";
 export default function SearchNavbar() {
   const pathname = usePathname();
 
+  // --- LOGIKA PERBAIKAN ---
+  // Cek apakah halaman saat ini adalah bagian dari 'berita' (termasuk /berita dan /berita/[id])
+  const isBeritaSection = pathname.startsWith("/berita");
+  const isTiketPage = pathname === "/tiket";
+
   // Logika ganti warna background berdasarkan halaman
   const backgroundColor =
-    pathname === "/tiket"
-      ? "#13564C"
-      : pathname === "/berita"
-      ? "#13564C"
-      : "#FFFFFF";
+    isTiketPage || isBeritaSection ? "#13564C" : "#FFFFFF";
 
   const useWhiteLogo = backgroundColor !== "#FFFFFF";
   const logoSrc = useWhiteLogo ? "/images/whitelogo.png" : "/images/logo.png";
@@ -23,24 +24,23 @@ export default function SearchNavbar() {
   const textColor = useWhiteLogo ? "text-white" : "text-[#1D3F11]";
 
   // Logika menu berdasarkan halaman
-  const menuItems =
-    pathname === "/tiket"
-      ? [
-          { label: "Home", href: "/" },
-          { label: "Berita", href: "/berita" },
-          { label: "Flora & Fauna", href: "/florafauna" },
-        ]
-      : pathname === "/berita"
-      ? [
-          { label: "Home", href: "/" },
-          { label: "Tiket", href: "/tiket" },
-          { label: "Flora & Fauna", href: "/florafauna" },
-        ]
-      : [
-          { label: "Home", href: "/" },
-          { label: "Tiket", href: "/tiket" },
-          { label: "Berita", href: "/berita" },
-        ];
+  const menuItems = isTiketPage
+    ? [
+        { label: "Home", href: "/" },
+        { label: "Berita", href: "/berita" },
+        { label: "Flora & Fauna", href: "/florafauna" },
+      ]
+    : isBeritaSection
+    ? [
+        { label: "Home", href: "/" },
+        { label: "Tiket", href: "/tiket" },
+        { label: "Flora & Fauna", href: "/florafauna" },
+      ]
+    : [
+        { label: "Home", href: "/" },
+        { label: "Tiket", href: "/tiket" },
+        { label: "Berita", href: "/berita" },
+      ];
 
   return (
     <nav className="shadow-sm sticky top-0 z-50" style={{ backgroundColor }}>

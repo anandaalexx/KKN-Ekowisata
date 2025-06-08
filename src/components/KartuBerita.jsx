@@ -1,25 +1,32 @@
-// src/components/RelatedArticleCard.jsx
+// src/components/KartuBerita.jsx (atau RelatedArticleCard.jsx)
+
 import React from "react";
 import Image from "next/image";
-import Link from "next/link"; // Jika ingin setiap item bisa diklik
+import Link from "next/link";
 
-export default function RelatedArticleCard({ image, title, href }) {
+export default function RelatedArticleCard({ href, image, title }) {
   return (
-    <Link href={href || "#"}>
-      <a className="flex items-center gap-3 p-2.5 rounded-lg hover:bg-slate-700/50 transition-colors duration-150 cursor-pointer group">
-        <div className="relative w-20 h-16 rounded-md overflow-hidden flex-shrink-0">
-          <Image
-            src={image}
-            alt={title}
-            layout="fill"
-            objectFit="cover"
-            className="transition-transform duration-300 group-hover:scale-110"
-          />
-        </div>
-        <h3 className="text-sm font-medium text-gray-200 group-hover:text-white leading-snug line-clamp-3">
+    <Link
+      href={href}
+      className="group flex items-center gap-4 hover:bg-[#0E4A40]/30 p-3 rounded-lg transition-colors duration-200"
+    >
+      {/* Gambar */}
+      <div className="flex-shrink-0 w-20 h-20 sm:w-24 sm:h-24 relative rounded-md overflow-hidden">
+        <Image
+          src={image}
+          alt={title}
+          layout="fill"
+          objectFit="cover"
+          className="transition-transform duration-300 group-hover:scale-105"
+        />
+      </div>
+
+      {/* Judul */}
+      <div className="flex-1">
+        <h3 className="text-xl font-medium text-[#0E4A40] group-hover:text-white leading-tight">
           {title}
         </h3>
-      </a>
+      </div>
     </Link>
   );
 }
