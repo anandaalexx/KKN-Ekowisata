@@ -18,11 +18,9 @@ export default function AnimalCard({ name, image }) {
       </div>
       <div className="text-left w-full">
         {" "}
-        {/* Pastikan teks rata kiri */}
-        <h3 className="font-semibold text-lg mb-1">{name}</h3>{" "}
-        {/* Ukuran font lebih besar */}
-        <p className="text-sm text-gray-400">Friend of people</p>
-        <p className="text-sm text-gray-400">Always scared</p>
+        <h3 className="font-medium text-black text-lg mb-1">{name}</h3>{" "}
+        <p className="text-sm font-medium text-gray-100">Friend of people</p>
+        <p className="text-sm font-medium text-gray-100">Always scared</p>
       </div>
     </div>
   );

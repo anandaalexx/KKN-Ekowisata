@@ -19,7 +19,9 @@ export default function SearchNavbar() {
     isTiketPage || isBeritaSection ? "#13564C" : "#FFFFFF";
 
   const useWhiteLogo = backgroundColor !== "#FFFFFF";
-  const logoSrc = useWhiteLogo ? "/images/whitelogo.png" : "/images/logo.png";
+  const logoSrc = useWhiteLogo
+    ? "/images/logo-ewm.png"
+    : "/images/logo-ewm.png";
 
   const textColor = useWhiteLogo ? "text-white" : "text-[#1D3F11]";
 
@@ -47,13 +49,13 @@ export default function SearchNavbar() {
       {/* Ganti padding horizontal (px) di container utama */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between gap-x-4 md:gap-x-12">
         {/* Logo */}
-        <Link href="/" className="flex-shrink-0">
+        <Link href="/" className="w-34 h-auto">
           <Image
             src={logoSrc}
             alt="Logo Mini Zoo"
             width={192}
             height={72}
-            className="h-auto w-32 md:w-48" // Lebar logo responsif
+            className="h-auto w-32 md:w-[60%]" // Lebar logo responsif
             priority
           />
         </Link>

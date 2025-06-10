@@ -11,11 +11,11 @@ export default function Navbar() {
         {/* Logo */}
         <Link href="/" className="w-34 h-auto">
           <Image
-            src="/images/logo.png"
+            src="/images/logo-ewm.png"
             alt="Logo Mini Zoo"
             width={192}
             height={72}
-            className="h-auto w-full"
+            className="h-auto w-[60%]"
             priority
           />
         </Link>
