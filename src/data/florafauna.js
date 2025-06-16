@@ -5,15 +5,12 @@ export const floraFaunaData = [
   // 1. Capybara
   {
     id: 1,
-    image: "/images/florafauna/capybara.jpg",
+    image: "/images/capybara.png",
     name: "Capybara",
     line1: "Hydrochoerus hydrochaeris",
     line2: "Status: Least Concern",
     title: "Capybara",
-    images: [
-      "/images/florafauna/capybara.jpg",
-      "/images/florafauna/capybara2.jpg",
-    ],
+    images: ["/images/capybara.png", "/images/capybara2.png"],
     tabs: [
       { name: "Info", contentKey: "info" },
       { name: "Taxonomy", contentKey: "taxonomy" },
@@ -42,15 +39,12 @@ export const floraFaunaData = [
   // 2. Dusky Shark
   {
     id: 2,
-    image: "/images/florafauna/duskyshark.jpg",
+    image: "/images/duskyshark.png",
     name: "Dusky Shark",
     line1: "Carcharhinus obscurus",
     line2: "Status: Endangered",
     title: "Dusky Shark",
-    images: [
-      "/images/florafauna/duskyshark.jpg",
-      "/images/florafauna/duskyshark2.jpg",
-    ],
+    images: ["/images/duskyshark.png", "/images/duskyshark2.png"],
     tabs: [
       { name: "Info", contentKey: "info" },
       { name: "Taxonomy", contentKey: "taxonomy" },
@@ -79,15 +73,12 @@ export const floraFaunaData = [
   // 3. Capuchin Monkey
   {
     id: 3,
-    image: "/images/florafauna/capuchin.jpg",
+    image: "/images/capuchinmonkey.png",
     name: "Capuchin Monkey",
     line1: "Cebus capucinus",
     line2: "Status: Least Concern",
     title: "Capuchin Monkey",
-    images: [
-      "/images/florafauna/capuchin.jpg",
-      "/images/florafauna/capuchin2.jpg",
-    ],
+    images: ["/images/capuchin.png", "/images/capuchinmonkey2.png"],
     tabs: [
       { name: "Info", contentKey: "info" },
       { name: "Taxonomy", contentKey: "taxonomy" },
@@ -120,12 +111,12 @@ export const floraFaunaData = [
   // 4. Coyote
   {
     id: 4,
-    image: "/images/florafauna/coyote.jpg",
+    image: "/images/coyote.png",
     name: "Coyote",
     line1: "Canis latrans",
     line2: "Status: Least Concern",
     title: "Coyote",
-    images: ["/images/florafauna/coyote.jpg", "/images/florafauna/coyote2.jpg"],
+    images: ["/images/coyote.png", "/images/coyote2.png"],
     tabs: [
       { name: "Info", contentKey: "info" },
       { name: "Taxonomy", contentKey: "taxonomy" },
@@ -158,15 +149,12 @@ export const floraFaunaData = [
   // 5. Aardwolf
   {
     id: 5,
-    image: "/images/florafauna/aardwolf.jpg",
+    image: "/images/aardwolf.png",
     name: "Aardwolf",
     line1: "Proteles cristata",
     line2: "Status: Least Concern",
     title: "Aardwolf",
-    images: [
-      "/images/florafauna/aardwolf.jpg",
-      "/images/florafauna/aardwolf2.jpg",
-    ],
+    images: ["/images/aardwolf.png", "/images/aardwolf2.png"],
     tabs: [
       { name: "Info", contentKey: "info" },
       { name: "Taxonomy", contentKey: "taxonomy" },
@@ -195,12 +183,12 @@ export const floraFaunaData = [
   // 6. Elk
   {
     id: 6,
-    image: "/images/florafauna/elk.jpg",
+    image: "/images/elk.png",
     name: "Elk",
     line1: "Cervus canadensis",
     line2: "Status: Least Concern",
     title: "Elk",
-    images: ["/images/florafauna/elk.jpg", "/images/florafauna/elk2.jpg"],
+    images: ["/images/elk.png", "/images/elk2.png"],
     tabs: [
       { name: "Info", contentKey: "info" },
       { name: "Taxonomy", contentKey: "taxonomy" },
@@ -229,12 +217,12 @@ export const floraFaunaData = [
   // 7. Alpaca
   {
     id: 7,
-    image: "/images/florafauna/alpaca.jpg",
+    image: "/images/alpaca.png",
     name: "Alpaca",
     line1: "Vicugna pacos",
     line2: "Status: Domesticated",
     title: "Alpaca",
-    images: ["/images/florafauna/alpaca.jpg", "/images/florafauna/alpaca2.jpg"],
+    images: ["/images/alpaca.png", "/images/alpaca2.png"],
     tabs: [
       { name: "Info", contentKey: "info" },
       { name: "Biology", contentKey: "biology" },
@@ -255,12 +243,12 @@ export const floraFaunaData = [
   // 8. Cow
   {
     id: 8,
-    image: "/images/florafauna/cow.jpg",
+    image: "/images/cow.png",
     name: "Cow",
     line1: "Bos taurus",
     line2: "Status: Domesticated",
     title: "Cow",
-    images: ["/images/florafauna/cow.jpg", "/images/florafauna/cow2.jpg"],
+    images: ["/images/cow.png", "/images/cow2.png"],
     tabs: [
       { name: "Info", contentKey: "info" },
       { name: "Biology", contentKey: "biology" },
@@ -281,15 +269,12 @@ export const floraFaunaData = [
   // 9. Chimpanzee
   {
     id: 9,
-    image: "/images/florafauna/chimpanzee.jpg",
+    image: "/images/chimpanzee.png",
     name: "Chimpanzee",
     line1: "Pan troglodytes",
     line2: "Status: Endangered",
     title: "Chimpanzee",
-    images: [
-      "/images/florafauna/chimpanzee.jpg",
-      "/images/florafauna/chimpanzee2.jpg",
-    ],
+    images: ["/images/chimpanzee.png", "/images/chimpanzee2.png"],
     tabs: [
       { name: "Info", contentKey: "info" },
       { name: "Taxonomy", contentKey: "taxonomy" },
@@ -326,12 +311,12 @@ export const floraFaunaData = [
   // 10. Gibbon
   {
     id: 10,
-    image: "/images/florafauna/gibbon.jpg",
+    image: "/images/gibbon.png",
     name: "Gibbon",
     line1: "Hylobatidae",
     line2: "Status: Endangered",
     title: "Gibbon",
-    images: ["/images/florafauna/gibbon.jpg", "/images/florafauna/gibbon2.jpg"],
+    images: ["/images/gibbon.png", "/images/gibbon2.png"],
     tabs: [
       { name: "Info", contentKey: "info" },
       { name: "Biology", contentKey: "biology" },
@@ -352,12 +337,12 @@ export const floraFaunaData = [
   // 11. Deer
   {
     id: 11,
-    image: "/images/florafauna/deer.jpg",
+    image: "/images/deer.png",
     name: "Deer",
     line1: "Cervidae",
     line2: "Status: Varies by species",
     title: "Deer",
-    images: ["/images/florafauna/deer.jpg", "/images/florafauna/deer2.jpg"],
+    images: ["/images/deer.png", "/images/deer2.png"],
     tabs: [
       { name: "Info", contentKey: "info" },
       { name: "Biology", contentKey: "biology" },
@@ -378,15 +363,12 @@ export const floraFaunaData = [
   // 12. Bandicoot
   {
     id: 12,
-    image: "/images/florafauna/bandicoot.jpg",
+    image: "/images/bandicoot.png",
     name: "Bandicoot",
     line1: "Peramelemorphia",
     line2: "Status: Varies by species",
     title: "Bandicoot",
-    images: [
-      "/images/florafauna/bandicoot.jpg",
-      "/images/florafauna/bandicoot2.jpg",
-    ],
+    images: ["/images/bandicoot.png", "/images/bandicoot2.png"],
     tabs: [
       { name: "Info", contentKey: "info" },
       { name: "Biology", contentKey: "biology" },
@@ -407,15 +389,12 @@ export const floraFaunaData = [
   // 13. Fresh Water Crocodile
   {
     id: 13,
-    image: "/images/florafauna/crocodile.jpg",
+    image: "/images/crocodile.png",
     name: "Fresh Water Crocodile",
     line1: "Crocodylus johnstoni",
     line2: "Status: Least Concern",
     title: "Freshwater Crocodile",
-    images: [
-      "/images/florafauna/crocodile.jpg",
-      "/images/florafauna/crocodile2.jpg",
-    ],
+    images: ["/images/crocodile.png", "/images/crocodile2.png"],
     tabs: [
       { name: "Info", contentKey: "info" },
       { name: "Biology", contentKey: "biology" },
@@ -436,15 +415,12 @@ export const floraFaunaData = [
   // 14. Black Bear
   {
     id: 14,
-    image: "/images/florafauna/blackbear.jpg",
+    image: "/images/blackbear.png",
     name: "Black Bear",
     line1: "Ursus americanus",
     line2: "Status: Least Concern",
     title: "American Black Bear",
-    images: [
-      "/images/florafauna/blackbear.jpg",
-      "/images/florafauna/blackbear2.jpg",
-    ],
+    images: ["/images/blackbear.png", "/images/blackbear2.png"],
     tabs: [
       { name: "Info", contentKey: "info" },
       { name: "Biology", contentKey: "biology" },
@@ -469,15 +445,12 @@ export const floraFaunaData = [
   // 15. Antelope
   {
     id: 15,
-    image: "/images/florafauna/antelope.jpg",
+    image: "/images/antelope.png",
     name: "Antelope",
     line1: "Antilopinae",
     line2: "Status: Varies by species",
     title: "Antelope",
-    images: [
-      "/images/florafauna/antelope.jpg",
-      "/images/florafauna/antelope2.jpg",
-    ],
+    images: ["/images/antelope.png", "/images/antelope2.png"],
     tabs: [
       { name: "Info", contentKey: "info" },
       { name: "Taxonomy", contentKey: "taxonomy" },

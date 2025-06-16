@@ -55,7 +55,7 @@ export default function SearchNavbar() {
             alt="Logo Mini Zoo"
             width={192}
             height={72}
-            className="h-auto w-32 md:w-[60%]" // Lebar logo responsif
+            className="h-auto w-32 md:w-[60%]"
             priority
           />
         </Link>
